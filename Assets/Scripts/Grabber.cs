@@ -9,7 +9,7 @@ public class Grabber : MonoBehaviour
 
     [SerializeField]
     private Transform grabbedObjectAnchor;
-    
+
     [SerializeField]
     private GameObject grabbableObject;
 
@@ -22,6 +22,8 @@ public class Grabber : MonoBehaviour
     private float grabbedObjectMass;
 
     BoxCollider grabbingCollider;
+
+    public Item GrabbedItem => grabbableObject != null ? grabbableObject.GetComponent<Item>() : null;
 
     private void Start()
     {
@@ -72,7 +74,7 @@ public class Grabber : MonoBehaviour
 
     public void Drop()
     {
-      grabbingCollider.enabled = true;
+        grabbingCollider.enabled = true;
 
         Grabbed = false;
 
@@ -92,5 +94,20 @@ public class Grabber : MonoBehaviour
             itemObj.Dropped();
         }
     }
-}
 
+    /// <summary>
+    /// Remove item from game.
+    /// </summary>
+    public void RemoveItem()
+    {
+        grabbingCollider.enabled = true;
+
+        Grabbed = false;
+
+        grabbableObject.transform.SetParent(null);
+
+        GrabbedObjectWeight = 0;
+
+        Destroy(grabbableObject);
+    }
+}

@@ -77,14 +77,46 @@ public class PlayerController : MonoBehaviour
         }
 
         else if (playerGrabber.Grabbed && Input.GetKeyDown(KeyCode.F))
-        {
-            playerGrabber.Drop();
-        }
+		{
+			ConstructionHandler constructionHandler = ConstructionZone;
+			if (constructionHandler != null)
+			{
+				var item = playerGrabber.GrabbedItem;
+				var canAddToStorage = constructionHandler.CanAddToStorage(item.MaterialType);
 
-        itemWeight = playerGrabber.GrabbedObjectWeight;
+				if (canAddToStorage)
+				{
+					constructionHandler.AddToStorage(item.MaterialType);
+					playerGrabber.RemoveItem();
+				}
+			}
+			else
+			{
+				playerGrabber.Drop();
+			}
+		}
+
+		itemWeight = playerGrabber.GrabbedObjectWeight;
     }
 
-    private void walking(float zRotation)
+	private ConstructionHandler ConstructionZone
+	{
+		get
+		{
+			Collider[] colliders = Physics.OverlapSphere(transform.position, 1);
+			for (int i = 0; i < colliders.Length; ++i)
+			{
+				if (colliders[i].CompareTag("Construction Zone"))
+				{
+					return colliders[i].GetComponent<ConstructionHandler>();
+				}
+			}
+
+			return null;
+		}
+	}
+
+	private void walking(float zRotation)
     {
         float speed = (step - itemWeight) * Time.deltaTime;
         transform.localRotation =  Quaternion.Euler(0, zRotation, 0);

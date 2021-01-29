@@ -45,9 +45,7 @@ public sealed class ConstructionHandler : MonoBehaviour
 	{
 		storage.Add(materialType);
 
-		var constructionIsFinished = IsConstructionFinished(currentInstructions, storage);
-
-		if (constructionIsFinished)
+		if (IsConstructionFinished(currentInstructions, storage))
 		{
 			onTierComplete.Invoke();
 			if (gameSequence.TierCount == tier + 1)
@@ -57,6 +55,7 @@ public sealed class ConstructionHandler : MonoBehaviour
 			} 
 			else
 			{
+				++tier;
 				currentInstructions = gameSequence.Tiers[tier].Instructions;
 				onNewInstructions.Invoke(currentInstructions);
 			}

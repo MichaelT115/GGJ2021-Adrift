@@ -5,6 +5,8 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField]
+    private MaterialType materialType;
+    [SerializeField]
     private GameObject textObject;
     Transform cameraPosition;
 
@@ -17,7 +19,9 @@ public class Item : MonoBehaviour
     [SerializeField]
     private AudioClip dropItemAudioClip;
 
-    private void Start()
+	public MaterialType MaterialType { get => materialType; set => materialType = value; }
+
+	private void Start()
     {
         outline = GetComponentInChildren<Outline>();
         itemAudioSource = GetComponent<AudioSource>();
@@ -37,16 +41,18 @@ public class Item : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        hideTextAndOutline();
+        HideTextAndOutline();
     }
 
     public void PickedUp()
     {
         transform.localScale = new Vector3(.5f, .5f, .5f);
-        if (pickupItemAudioClip != null)
-        itemAudioSource.PlayOneShot(pickupItemAudioClip);
+		if (pickupItemAudioClip != null)
+		{
+			itemAudioSource.PlayOneShot(pickupItemAudioClip);
+		}
 
-        hideTextAndOutline();
+		HideTextAndOutline();
     }
 
     public void Dropped()
@@ -54,10 +60,12 @@ public class Item : MonoBehaviour
         transform.localScale = new Vector3(.5f, .5f, .5f);
 
         if (dropItemAudioClip != null)
-        itemAudioSource.PlayOneShot(dropItemAudioClip);
-    }
+		{
+			itemAudioSource.PlayOneShot(dropItemAudioClip);
+		}
+	}
 
-    public void hideTextAndOutline()
+    public void HideTextAndOutline()
     {
         textObject.SetActive(false);
         outline.enabled = false;
