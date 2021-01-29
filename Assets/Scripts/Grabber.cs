@@ -46,8 +46,6 @@ public class Grabber : MonoBehaviour
         }
     }
 
-
-
     public void Grab()
     {
         grabbingCollider.enabled = false;
