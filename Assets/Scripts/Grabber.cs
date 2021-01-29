@@ -4,110 +4,73 @@ using UnityEngine;
 
 public class Grabber : MonoBehaviour
 {
-    public bool isGrabbable;
-    public bool Grabbed;
+	private const string ITEM_TAG = "Item";
 
-    [SerializeField]
+	[SerializeField]
     private Transform grabbedObjectAnchor;
-
     [SerializeField]
-    private GameObject grabbableObject;
-
+	private GameObject nearGrabbableObject;
     [SerializeField]
-    private List<GameObject> grabbableObjects = new List<GameObject>();
+    private Item grabbedItem;
 
-    private Transform grabbableObjectSize;
+    private BoxCollider grabbingCollider;
 
-    public float GrabbedObjectWeight;
-    private float grabbedObjectMass;
-
-    BoxCollider grabbingCollider;
-
-    public Item GrabbedItem => grabbableObject != null ? grabbableObject.GetComponent<Item>() : null;
-
-    private void Start()
+	private void Start()
     {
         grabbingCollider = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Item"))
+        if (other.CompareTag(ITEM_TAG))
         {
-            isGrabbable = true;
-            grabbableObject = other.gameObject;
+            nearGrabbableObject = other.gameObject;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+	private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Item"))
+        if (other.CompareTag(ITEM_TAG))
         {
-            isGrabbable = false;
-            grabbableObject = null;
+            nearGrabbableObject = null;
         }
     }
 
-    public void Grab()
+    public void GrabItem()
     {
+        grabbedItem = nearGrabbableObject.GetComponent<Item>();
+        grabbedItem.PickedUp();
+
         grabbingCollider.enabled = false;
+        grabbedItem.transform.SetParent(transform);
+        grabbedItem.transform.localPosition = grabbedObjectAnchor.localPosition;
+        grabbedItem.transform.localRotation = grabbedObjectAnchor.localRotation;
 
-        Grabbed = true;
-        grabbableObject.transform.SetParent(transform);
-
-        Item itemObj = grabbableObject.GetComponent<Item>();
-
-        if (itemObj != null)
-        {
-            itemObj.PickedUp();
-        }
-
-        grabbableObject.transform.localPosition = grabbedObjectAnchor.transform.localPosition;
-        grabbableObject.transform.localRotation = grabbedObjectAnchor.transform.localRotation;
-
-        Rigidbody rb = grabbableObject.GetComponent<Rigidbody>();
-        Destroy(rb);
-
-        GrabbedObjectWeight = rb.mass;
-        grabbedObjectMass = rb.mass;
+        grabbedItem.Rigidbody.isKinematic = true;
+        grabbedItem.Rigidbody.detectCollisions = false;
     }
 
-    public void Drop()
+    public void DropItem()
     {
         grabbingCollider.enabled = true;
+        grabbedItem.transform.SetParent(null);
+        grabbedItem.Rigidbody.isKinematic = false;
+        grabbedItem.Rigidbody.detectCollisions = true;
 
-        Grabbed = false;
-
-        grabbableObject.transform.SetParent(null);
-
-        Rigidbody rb = grabbableObject.AddComponent<Rigidbody>();
-        rb.mass = grabbedObjectMass;
-        rb.useGravity = true;
-        rb.isKinematic = false;
-
-        GrabbedObjectWeight = 0;
-
-        Item itemObj = grabbableObject.GetComponent<Item>();
-
-        if (itemObj != null)
-        {
-            itemObj.Dropped();
-        }
+        grabbedItem.Dropped();
+        grabbedItem = null;
     }
 
-    /// <summary>
-    /// Remove item from game.
-    /// </summary>
     public void RemoveItem()
     {
         grabbingCollider.enabled = true;
-
-        Grabbed = false;
-
-        grabbableObject.transform.SetParent(null);
-
-        GrabbedObjectWeight = 0;
-
-        Destroy(grabbableObject);
+        Destroy(grabbedItem.gameObject);
+        grabbedItem = null;
     }
+
+    public Item GrabbedItem => grabbedItem;
+    public bool IsNearGrabbableObject => nearGrabbableObject != null;
+    public GameObject NearGrabableObject => nearGrabbableObject;
+    public bool IsHoldingObject => grabbedItem != null;
+    public float GrabbedObjectWeight => GrabbedItem != null ? GrabbedItem.Rigidbody.mass : 0;
 }

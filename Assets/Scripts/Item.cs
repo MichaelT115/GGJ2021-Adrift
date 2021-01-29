@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public sealed class Item : MonoBehaviour
 {
     [SerializeField]
     private MaterialType materialType;
@@ -20,12 +20,15 @@ public class Item : MonoBehaviour
     private AudioClip dropItemAudioClip;
 
 	public MaterialType MaterialType { get => materialType; set => materialType = value; }
+    public Rigidbody Rigidbody { get; private set; }
 
 	private void Start()
     {
         outline = GetComponentInChildren<Outline>();
         itemAudioSource = GetComponent<AudioSource>();
         cameraPosition = GameObject.FindWithTag("MainCamera").transform;
+
+        Rigidbody = GetComponent<Rigidbody>();
     }
 
     private void OnTriggerStay(Collider other)
