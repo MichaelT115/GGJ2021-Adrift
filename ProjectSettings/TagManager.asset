@@ -10,6 +10,8 @@ TagManager:
   - Poop Targeter
   - Construction Zone
   - Spawn Point
+  - Water
+  - Terrain
   layers:
   - Default
   - TransparentFX
