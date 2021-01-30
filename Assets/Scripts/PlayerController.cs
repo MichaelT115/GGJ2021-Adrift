@@ -1,37 +1,47 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-	[SerializeField]
-	private float step;
+    [SerializeField]
+    private float step;
 	[SerializeField]
 	private float itemWeight;
 
 	private Grabber playerGrabber;
 	private Animator anim;
 
-	private void Start()
-	{
-		itemWeight = 0;
+    bool canMove = true;
 
-		anim = GetComponent<Animator>();
-		playerGrabber = GetComponentInChildren<Grabber>();
-	}
+    Rigidbody rb;
 
-	void Update()
-	{
-		Controls();
-		CheckForGrabber();
-	}
+    [SerializeField]
+    private ParticleSystem playerStunParticles;
 
-	private void Controls()
+    private void Start()
+    {
+        itemWeight = 0;
+        rb = GetComponent<Rigidbody>();
+
+        anim = GetComponent<Animator>();
+        playerGrabber = GetComponentInChildren<Grabber>();
+    }
+
+    void Update()
+    {
+        Controls();
+        CheckForGrabber();
+    }
+
+    private void Controls()
 	{
-		if (IsWalking)
+		if (IsWalking && canMove)
 		{
 			WalkInDirection(Direction);
 		}
 
-		if (!IsWalking)
+		if (!IsWalking && canMove)
 		{
 			if (!playerGrabber.IsHoldingObject)
 			{
@@ -51,13 +61,13 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void CheckForGrabber()
-	{
-		if (!playerGrabber.IsHoldingObject && playerGrabber.IsNearGrabbableObject && Input.GetKeyDown(KeyCode.F))
-		{
-			playerGrabber.GrabItem();
-		}
+    {
+        if (!playerGrabber.IsHoldingObject && playerGrabber.IsNearGrabbableObject && Input.GetKeyDown(KeyCode.F))
+        {
+            playerGrabber.GrabItem();
+        }
 
-		else if (playerGrabber.IsHoldingObject && Input.GetKeyDown(KeyCode.F))
+        else if (playerGrabber.IsHoldingObject && Input.GetKeyDown(KeyCode.F))
 		{
 			ConstructionHandler constructionHandler = ConstructionZone;
 			if (constructionHandler != null)
@@ -78,30 +88,30 @@ public class PlayerController : MonoBehaviour
 		}
 
 		itemWeight = playerGrabber.GrabbedObjectWeight;
-	}
+    }
 
 	private void WalkInDirection(float zRotation)
-	{
-		float speed = (step - itemWeight) * Time.deltaTime;
-		transform.localRotation = Quaternion.Euler(0, zRotation, 0);
-		transform.Translate(Vector3.forward * speed);
+    {
+        float speed = (step - itemWeight) * Time.deltaTime;
+        transform.localRotation =  Quaternion.Euler(0, zRotation, 0);
+        transform.Translate(Vector3.forward * speed);
 
-		if (!playerGrabber.IsHoldingObject)
-		{
-			anim.SetBool("Walking", true);
-			anim.SetBool("Idle", false);
-			anim.SetBool("Carrying Idle", false);
-			anim.SetBool("Carrying Walking", false);
-		}
+        if (!playerGrabber.IsHoldingObject)
+        {
+            anim.SetBool("Walking", true);
+            anim.SetBool("Idle", false);
+            anim.SetBool("Carrying Idle", false);
+            anim.SetBool("Carrying Walking", false);
+        }
 
-		if (playerGrabber.IsHoldingObject)
-		{
-			anim.SetBool("Walking", false);
-			anim.SetBool("Idle", false);
-			anim.SetBool("Carrying Idle", false);
-			anim.SetBool("Carrying Walking", true);
-		}
-	}
+        if (playerGrabber.IsHoldingObject)
+        {
+            anim.SetBool("Carrying Walking", true);
+            anim.SetBool("Walking", false);
+            anim.SetBool("Idle", false);
+            anim.SetBool("Carrying Idle", false);          
+        }
+    }
 
 	public bool IsWalking =>
 		Input.GetKey(KeyCode.W) ||
@@ -135,7 +145,34 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	public ConstructionHandler ConstructionZone
+    public void GetHit()
+    {
+        if (canMove)
+        {
+            StartCoroutine(GettingHit());
+        }
+    }
+
+    public IEnumerator GettingHit()
+    {
+        canMove = false;
+        //rb.AddForceAtPosition(Vector3.up * 7500, transform.position);
+        playerStunParticles.Play();
+
+        if (playerGrabber.GrabbedItem != null)
+        {
+            playerGrabber.DropItem();
+        }
+
+        anim.SetTrigger("Get Hit");
+
+        yield return new WaitForSeconds(1.25f); //lenght of animation
+
+        playerStunParticles.Stop();
+        canMove = true;
+    }
+
+    public ConstructionHandler ConstructionZone
 	{
 		get
 		{

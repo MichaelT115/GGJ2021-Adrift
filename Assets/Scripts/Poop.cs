@@ -31,6 +31,12 @@ public class Poop : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
+            playerController.GetHit();         
+        }
+
         GameObject poopSplatterParticleObj = Instantiate(poopSplatter, transform.position, transform.rotation);
 
         Destroy(poopTargeterObj);
