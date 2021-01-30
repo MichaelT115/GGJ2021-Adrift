@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - Poop Targeter
   - Construction Zone
+  - Spawn Point
   layers:
   - Default
   - TransparentFX

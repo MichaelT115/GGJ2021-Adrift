@@ -68,7 +68,12 @@ public sealed class Item : MonoBehaviour
 		}
 	}
 
-    public void HideTextAndOutline()
+	public void Remove()
+	{
+        Destroy(gameObject);
+	}
+
+	public void HideTextAndOutline()
     {
         textObject.SetActive(false);
         outline.enabled = false;
