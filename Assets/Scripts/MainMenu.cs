@@ -7,6 +7,9 @@ public class MainMenu : MonoBehaviour {
 
     public AudioSource audioSource;
     public AudioClip audioClip;
+
+    [SerializeField]
+    private string sceneName;
     
     public void playMenuButtonPress() {
         audioSource.clip = audioClip;
@@ -14,7 +17,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void PlayGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(sceneName);
     }
 
     public void QuitGame() {
