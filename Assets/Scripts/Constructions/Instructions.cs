@@ -20,8 +20,11 @@ public sealed class Instructions : ScriptableObject
 
 	[SerializeField]
 	private Entry[] entries;
+	[SerializeField]
+	private string shipPartName;
 
-	public Entry[] Entries { get => entries; set => entries = value; }
+	public Entry[] Entries => entries;
+	public string ShipPartName => shipPartName;
 
 	public ref readonly Entry GetEntry(MaterialType materialType)
 	{
@@ -34,4 +37,14 @@ public sealed class Instructions : ScriptableObject
 		}
 		return ref Entry.EMTPY;
 	}
+
+	public static Instructions EMPTY {
+		get  {		
+			var instructions = CreateInstance<Instructions>();
+
+			instructions.entries = new Entry[0];
+
+			return instructions;
+		}
+}
 }

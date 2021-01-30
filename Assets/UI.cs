@@ -6,16 +6,22 @@ public sealed class UI : MonoBehaviour
 	[SerializeField]
 	private TMPro.TMP_Text text;
 
-	public void DisplayInstructions(Instructions instructions)
+	public void DisplayInstructions(Instructions instructions) => text.text = FormatStorageState(instructions, Storage.EMPTY);
+
+	public void DisplayStorageState(Instructions instructions, Storage storage) => text.text = FormatStorageState(instructions, storage);
+
+	private static string FormatStorageState(in Instructions instructions, in Storage storage)
 	{
 		var stringBuilder = new StringBuilder();
-		stringBuilder.AppendLine("You need to find these materials:");
+		stringBuilder.AppendLine($"Build a: {instructions.ShipPartName}");
 		for (int i = 0; i < instructions.Entries.Length; ++i)
 		{
 			var instruction = instructions.Entries[i];
-			stringBuilder.AppendLine($"{i + 1}. {instruction.MaterialType.DisplayName} x{instruction.Count}");
+			var storageEntry = storage.GetStorageEntry(instruction.MaterialType);
+			stringBuilder.AppendLine($"{i + 1}. {instruction.MaterialType.DisplayName}: {storageEntry.Count}/{instruction.Count}");
 		}
 
-		text.text = stringBuilder.ToString();
+		string text = stringBuilder.ToString();
+		return text;
 	}
 }

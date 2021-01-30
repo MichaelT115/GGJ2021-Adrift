@@ -30,7 +30,7 @@ public struct Storage
 			StorageEntry entry = storageEntries[i];
 			if (entry.MaterialType == materialType)
 			{
-				storageEntries[i] = new StorageEntry() { MaterialType = materialType, Count = entry.Count };
+				storageEntries[i] = new StorageEntry() { MaterialType = materialType, Count = entry.Count + 1 };
 				return;
 			}
 		}
@@ -58,4 +58,9 @@ public struct Storage
 		}
 		return StorageEntry.EMTPY;
 	}
+
+	public static readonly Storage EMPTY = new Storage()
+	{
+		storageEntries = new List<StorageEntry>()
+	};
 }
