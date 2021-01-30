@@ -23,13 +23,13 @@ public sealed class WaterManager : MonoBehaviour
 		position.y = Mathf.Abs(Mathf.Sin(Time.time / time));
 		transform.position = position;
 
-		if (!hasCrested && position.y > 0.95f)
+		if (!hasCrested && position.y > 0.75f)
 		{
 			hasCrested = true;
 			onWaterCreasted.Invoke();
 		}
 
-		if (hasCrested && position.y < 0.05f)
+		if (hasCrested && position.y < -0.25f)
 		{
 			hasCrested = false;
 		}

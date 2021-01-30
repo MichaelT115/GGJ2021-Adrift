@@ -29,7 +29,7 @@ public class Poop : MonoBehaviour
         Destroy(gameObject, 2);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         GameObject poopSplatterParticleObj = Instantiate(poopSplatter, transform.position, transform.rotation);
 
