@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73defaedef1f8fb48ab4fcddff616d52, type: 3}
   m_Name: Tier 1
   m_EditorClassIdentifier: 
-  entries: []
+  entries:
+  - materialType: {fileID: 11400000, guid: 55de0716cb9db304b8527795ac6f723a, type: 2}
+    count: 1

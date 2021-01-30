@@ -30,12 +30,12 @@ public sealed class ConstructionHandler : MonoBehaviour
 
 	private void Start()
 	{
-		currentInstructions = gameSequence.Tiers[tier].Instructions;
+		CurrentInstructions = gameSequence.Tiers[tier].Instructions;
 	}
 
 	public bool CanAddToStorage(MaterialType materialType)
 	{
-		var instructionsEntry = currentInstructions.GetEntry(materialType);
+		var instructionsEntry = CurrentInstructions.GetEntry(materialType);
 		var storageEntry = storage. GetStorageEntry(materialType);
 
 		return instructionsEntry.Count > storageEntry.Count;
@@ -45,19 +45,18 @@ public sealed class ConstructionHandler : MonoBehaviour
 	{
 		storage.Add(materialType);
 
-		if (IsConstructionFinished(currentInstructions, storage))
+		if (IsConstructionFinished(CurrentInstructions, storage))
 		{
 			onTierComplete.Invoke();
 			if (gameSequence.TierCount == tier + 1)
 			{
-				currentInstructions = null;
+				CurrentInstructions = null;
 				onShipComplete.Invoke();
 			} 
 			else
 			{
 				++tier;
-				currentInstructions = gameSequence.Tiers[tier].Instructions;
-				onNewInstructions.Invoke(currentInstructions);
+				CurrentInstructions = gameSequence.Tiers[tier].Instructions;
 			}
 		}
 	}
@@ -79,4 +78,14 @@ public sealed class ConstructionHandler : MonoBehaviour
 	public UnityEvent OnShipComplete => onShipComplete;
 	public UnityEvent OnTierComplete => onTierComplete;
 	public UnityEvent<Instructions> OnNewInstructions => onNewInstructions;
+
+	public Instructions CurrentInstructions
+	{
+		get => currentInstructions; 
+		private set
+		{
+			currentInstructions = value;
+			onNewInstructions.Invoke(currentInstructions);
+		}
+	}
 }
