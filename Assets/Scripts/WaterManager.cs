@@ -82,7 +82,7 @@ public sealed class WaterManager : MonoBehaviour
 		}
 	}
 
-	private float DesiredHighTideHeight => Mathf.Sin(GameManager.GameTime) * 0.10f + 1.0f;
+	private float DesiredHighTideHeight => (Mathf.Sin(GameManager.GameTime) * 0.10f) + 1.0f;
 	private float DesiredLowTideHeight => (Mathf.Sin(GameManager.GameTime * 0.5f) * 0.025f) + 0.025f;
 
 	private void OnTriggerExit(Collider other)

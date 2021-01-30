@@ -25,7 +25,7 @@ public sealed class Item : MonoBehaviour
 	private void Start()
     {
         outline = GetComponentInChildren<Outline>();
-        itemAudioSource = GetComponent<AudioSource>();
+		itemAudioSource = GetComponent<AudioSource>();
         cameraPosition = GameObject.FindWithTag("MainCamera").transform;
 
         Rigidbody = GetComponent<Rigidbody>();
@@ -39,7 +39,6 @@ public sealed class Item : MonoBehaviour
         }
 
         textObject.SetActive(true);
-        textObject.transform.LookAt(cameraPosition.transform.position);
     }
 
     private void OnTriggerExit(Collider other)
@@ -49,7 +48,6 @@ public sealed class Item : MonoBehaviour
 
     public void PickedUp()
     {
-        transform.localScale = new Vector3(.5f, .5f, .5f);
 		if (pickupItemAudioClip != null)
 		{
 			itemAudioSource.PlayOneShot(pickupItemAudioClip);
@@ -60,8 +58,6 @@ public sealed class Item : MonoBehaviour
 
     public void Dropped()
     {
-        transform.localScale = new Vector3(.5f, .5f, .5f);
-
         if (dropItemAudioClip != null)
 		{
 			itemAudioSource.PlayOneShot(dropItemAudioClip);

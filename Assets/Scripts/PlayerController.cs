@@ -2,29 +2,29 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float step;
+	[SerializeField]
+	private float step;
 	[SerializeField]
 	private float itemWeight;
 
 	private Grabber playerGrabber;
 	private Animator anim;
 
-    private void Start()
-    {
-        itemWeight = 0;
+	private void Start()
+	{
+		itemWeight = 0;
 
-        anim = GetComponent<Animator>();
-        playerGrabber = GetComponentInChildren<Grabber>();
-    }
+		anim = GetComponent<Animator>();
+		playerGrabber = GetComponentInChildren<Grabber>();
+	}
 
-    void Update()
-    {
-        Controls();
-        CheckForGrabber();
-    }
+	void Update()
+	{
+		Controls();
+		CheckForGrabber();
+	}
 
-    private void Controls()
+	private void Controls()
 	{
 		if (IsWalking)
 		{
@@ -51,13 +51,13 @@ public class PlayerController : MonoBehaviour
 	}
 
 	private void CheckForGrabber()
-    {
-        if (!playerGrabber.IsHoldingObject && playerGrabber.IsNearGrabbableObject && Input.GetKeyDown(KeyCode.F))
-        {
-            playerGrabber.GrabItem();
-        }
+	{
+		if (!playerGrabber.IsHoldingObject && playerGrabber.IsNearGrabbableObject && Input.GetKeyDown(KeyCode.F))
+		{
+			playerGrabber.GrabItem();
+		}
 
-        else if (playerGrabber.IsHoldingObject && Input.GetKeyDown(KeyCode.F))
+		else if (playerGrabber.IsHoldingObject && Input.GetKeyDown(KeyCode.F))
 		{
 			ConstructionHandler constructionHandler = ConstructionZone;
 			if (constructionHandler != null)
@@ -78,30 +78,30 @@ public class PlayerController : MonoBehaviour
 		}
 
 		itemWeight = playerGrabber.GrabbedObjectWeight;
-    }
+	}
 
 	private void WalkInDirection(float zRotation)
-    {
-        float speed = (step - itemWeight) * Time.deltaTime;
-        transform.localRotation =  Quaternion.Euler(0, zRotation, 0);
-        transform.Translate(Vector3.forward * speed);
+	{
+		float speed = (step - itemWeight) * Time.deltaTime;
+		transform.localRotation = Quaternion.Euler(0, zRotation, 0);
+		transform.Translate(Vector3.forward * speed);
 
-        if (!playerGrabber.IsHoldingObject)
-        {
-            anim.SetBool("Walking", true);
-            anim.SetBool("Idle", false);
-            anim.SetBool("Carrying Idle", false);
-            anim.SetBool("Carrying Walking", false);
-        }
+		if (!playerGrabber.IsHoldingObject)
+		{
+			anim.SetBool("Walking", true);
+			anim.SetBool("Idle", false);
+			anim.SetBool("Carrying Idle", false);
+			anim.SetBool("Carrying Walking", false);
+		}
 
-        if (playerGrabber.IsHoldingObject)
-        {
-            anim.SetBool("Walking", false);
-            anim.SetBool("Idle", false);
-            anim.SetBool("Carrying Idle", false);
-            anim.SetBool("Carrying Walking", true);
-        }
-    }
+		if (playerGrabber.IsHoldingObject)
+		{
+			anim.SetBool("Walking", false);
+			anim.SetBool("Idle", false);
+			anim.SetBool("Carrying Idle", false);
+			anim.SetBool("Carrying Walking", true);
+		}
+	}
 
 	public bool IsWalking =>
 		Input.GetKey(KeyCode.W) ||

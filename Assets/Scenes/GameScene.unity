@@ -322,7 +322,7 @@ Transform:
   m_Children:
   - {fileID: 1904166339}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &188278413
 GameObject:
@@ -1298,7 +1298,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &838958947
 GameObject:
@@ -2085,6 +2085,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasCrested: 0
   time: 5
+  highTideCountdown: 15
+  lowTideCountdown: 5
+  tideLevel: 0
   onWaterCreasted:
     m_PersistentCalls:
       m_Calls:
@@ -2405,7 +2408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 269.426, z: 0}
 --- !u!114 &1687258586
 MonoBehaviour:
@@ -3039,7 +3042,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnableItems:
-  - {fileID: 5900580319494251134, guid: e7339a026b454054ead7cc6e2d71591f, type: 3}
+  - {fileID: 2247923014068879507, guid: e7339a026b454054ead7cc6e2d71591f, type: 3}
+  - {fileID: 2247923014068879507, guid: 2ea3307784f62af4b9f6ad408bce3433, type: 3}
+  - {fileID: 2247923014068879507, guid: f62b1b82a6d2dae4e9da1c16db152bea, type: 3}
+  - {fileID: 2247923014068879507, guid: 30b24a8dff9bb2e4bb1ca74ea358c6ff, type: 3}
+  - {fileID: 2247923014068879507, guid: edcfa12eb6a31fd40889aad26a4c3884, type: 3}
+  - {fileID: 2247923014068879507, guid: e1127795ff09f9a4ea50301a66af3c46, type: 3}
   spawnPoints: []
   spawnCount: 5
 --- !u!1 &1933312201
@@ -3431,7 +3439,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 45.000004, y: 234.454, z: 90.00001}
 --- !u!1001 &5900580318981114460
 PrefabInstance:
