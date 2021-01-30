@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad224cb5340aa44ea3d68a5452bf880, type: 3}
   m_Name: Rope
   m_EditorClassIdentifier: Assembly-CSharp::MaterialType
-  name: Rope
+  displayName: Rope

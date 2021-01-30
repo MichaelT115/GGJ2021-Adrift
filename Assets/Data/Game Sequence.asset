@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91248cf7d12a18b4b85563fbd92e01a1, type: 3}
   m_Name: Game Sequence
   m_EditorClassIdentifier: 
+  tiers:
+  - instructions: {fileID: 11400000, guid: ba3c7cc60bd4e854cb5c36f55a52c7f2, type: 2}
+  - instructions: {fileID: 11400000, guid: 71b8cdf4f8a8c9f4ca93cca6b4c89457, type: 2}

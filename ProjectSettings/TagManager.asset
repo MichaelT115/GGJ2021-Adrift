@@ -8,6 +8,7 @@ TagManager:
   - Item
   - FxTemporaire
   - Poop Targeter
+  - Construction Zone
   layers:
   - Default
   - TransparentFX

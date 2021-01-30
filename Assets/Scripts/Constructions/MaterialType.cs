@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Material Type", menuName = "New Material Type")]
 public sealed class MaterialType : ScriptableObject
 {
 	[SerializeField]
-	private new string name;
-
-	public string Name { get => name; set => name = value; }
+	private string displayName;
+	public string DisplayName => displayName;
 }
