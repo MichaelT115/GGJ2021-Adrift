@@ -142,9 +142,9 @@ public class PlayerController : MonoBehaviour
 			Collider[] colliders = Physics.OverlapSphere(transform.position, 0.2f);
 			for (int i = 0; i < colliders.Length; ++i)
 			{
-				if (colliders[i].CompareTag("Construction Zone"))
+				if (colliders[i].TryGetComponent(out ConstructionHandler constructionHandler))
 				{
-					return colliders[i].GetComponent<ConstructionHandler>();
+					return constructionHandler;
 				}
 			}
 

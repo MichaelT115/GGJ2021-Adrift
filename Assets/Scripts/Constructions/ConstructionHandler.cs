@@ -14,28 +14,35 @@ public sealed class ConstructionHandler : MonoBehaviour
 	private GameSequence gameSequence;
 
 	[SerializeField]
-	private int tier = 0;
+	private int tierLevel = 0;
 
-	[SerializeField]
-	private UnityEvent onShipComplete;
-	[SerializeField]
-	private UnityEvent onTierComplete;
-
+	#region Events
 	[Serializable]
 	private sealed class InstructionsEvent : UnityEvent<Instructions> { }
 
 	[Serializable]
 	private sealed class StorageStateEvent : UnityEvent<Instructions, Storage> { }
 
+	[Serializable]
+	private sealed class TierEvent : UnityEvent<int> { };
+
+	[SerializeField]
+	private UnityEvent onShipComplete;
+	[SerializeField]
+	private TierEvent onTierComplete;
 	[SerializeField]
 	private InstructionsEvent onNewInstructions;
-
 	[SerializeField]
 	private StorageStateEvent onStorageState;
+	#endregion
 
-	private void Start()
+
+	private void Start() => SetTier(0);
+
+	private void SetTier(int i)
 	{
-		CurrentInstructions = gameSequence.Tiers[tier].Instructions;
+		TierLevel = i;
+		CurrentInstructions = gameSequence.Tiers[tierLevel].Instructions;
 	}
 
 	public bool CanAddToStorage(MaterialType materialType)
@@ -56,16 +63,15 @@ public sealed class ConstructionHandler : MonoBehaviour
 		{
 			storage.Clear();
 
-			onTierComplete.Invoke();
-			if (gameSequence.TierCount == tier + 1)
+			bool isFinalTier = gameSequence.TierCount == tierLevel + 1;
+			if (isFinalTier)
 			{
 				CurrentInstructions = null;
 				onShipComplete.Invoke();
 			}
 			else
 			{
-				++tier;
-				CurrentInstructions = gameSequence.Tiers[tier].Instructions;
+				SetTier(tierLevel + 1);
 			}
 		}
 	}
@@ -85,7 +91,7 @@ public sealed class ConstructionHandler : MonoBehaviour
 	}
 
 	public UnityEvent OnShipComplete => onShipComplete;
-	public UnityEvent OnTierComplete => onTierComplete;
+	public UnityEvent<int> OnTierComplete => onTierComplete;
 	public UnityEvent<Instructions> OnNewInstructions => onNewInstructions;
 	public UnityEvent<Instructions, Storage> OnStorageState => onStorageState;
 	public Instructions CurrentInstructions
@@ -95,6 +101,15 @@ public sealed class ConstructionHandler : MonoBehaviour
 		{
 			currentInstructions = value;
 			onNewInstructions.Invoke(currentInstructions ? currentInstructions : Instructions.EMPTY);
+		}
+	}
+	public int TierLevel
+	{
+		get => tierLevel;
+		private set
+		{
+			tierLevel = value;
+			onTierComplete.Invoke(tierLevel);
 		}
 	}
 }
