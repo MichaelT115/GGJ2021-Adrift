@@ -531,7 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2038467286}
   audioClip: {fileID: 8300000, guid: 2f0f1a63d271f45b2849166d9d2c155f, type: 3}
-  sceneName: GameLogicTestScene
+  sceneName: GameScene
 --- !u!1 &551744748
 GameObject:
   m_ObjectHideFlags: 0
