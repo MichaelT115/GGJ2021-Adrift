@@ -7,4 +7,8 @@ public sealed class MaterialType : ScriptableObject
 	[SerializeField]
 	private string displayName;
 	public string DisplayName => displayName;
+
+	[SerializeField]
+	private Sprite icon;
+	public Sprite Icon => icon;
 }

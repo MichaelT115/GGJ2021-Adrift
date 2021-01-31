@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Nails
   m_EditorClassIdentifier: Assembly-CSharp::MaterialType
   displayName: Nails
+  icon: {fileID: 21300000, guid: 6039691de48915045a6c29ab54a34122, type: 3}

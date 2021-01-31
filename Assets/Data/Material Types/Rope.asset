@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Rope
   m_EditorClassIdentifier: Assembly-CSharp::MaterialType
   displayName: Rope
+  icon: {fileID: 21300000, guid: 6aa7b160a457735459402bff9a9ea589, type: 3}

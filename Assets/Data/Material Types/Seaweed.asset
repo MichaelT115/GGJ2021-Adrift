@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Seaweed
   m_EditorClassIdentifier: Assembly-CSharp::MaterialType
   displayName: Seaweed
+  icon: {fileID: 21300000, guid: 44c324d002d138c478d1d4a4e4df2afb, type: 3}
