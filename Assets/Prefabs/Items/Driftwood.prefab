@@ -171,6 +171,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 55de0716cb9db304b8527795ac6f723a,
         type: 2}
+    - target: {fileID: 4933699707548314212, guid: 8460b4e64f1e80f4981463f988ff24d8,
+        type: 3}
+      propertyPath: dropItemAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b79be000d09514093b084db81e27074e, type: 3}
+    - target: {fileID: 4933699707548314212, guid: 8460b4e64f1e80f4981463f988ff24d8,
+        type: 3}
+      propertyPath: pickupItemAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a7fb3bef0b1a42ada45a123a2407c53, type: 3}
     - target: {fileID: 4933699707548314213, guid: 8460b4e64f1e80f4981463f988ff24d8,
         type: 3}
       propertyPath: m_Size.y
