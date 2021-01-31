@@ -38,38 +38,62 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 89b6be808fdfd3649911707b16c92538, type: 3}
   - {fileID: 21300000, guid: 44c324d002d138c478d1d4a4e4df2afb, type: 3}
   - {fileID: 21300000, guid: 9120f38117782814c805131752533bea, type: 3}
+  - {fileID: 21300000, guid: 360ca442315160e46b18a7c0dbd8c5a6, type: 3}
+  - {fileID: 21300000, guid: 941a5b425c141194083303bb1ad8dc5a, type: 3}
   - {fileID: 21300000, guid: f1804472bae36a8479e59c598d36f78d, type: 3}
   - {fileID: 21300000, guid: bfb377f2ecdbe6145a3f306462e763c7, type: 3}
   - {fileID: 21300000, guid: 16e29df3db42c2140bb30ef4fc3fca90, type: 3}
   - {fileID: 21300000, guid: 8986dd44c08d061428d40545a6c03b8e, type: 3}
   - {fileID: 21300000, guid: e9df1ac42e064704287543137acadbea, type: 3}
+  - {fileID: 21300000, guid: 4d4379e468bd08e429745b4f512459a2, type: 3}
+  - {fileID: 21300000, guid: 19a834f455ad5cb46aa314c746c73d97, type: 3}
   - {fileID: 21300000, guid: 2bee31057f42e2b4c9ce66e4d0762746, type: 3}
+  - {fileID: 21300000, guid: e3650725934b8c941b6f6e2a621c0661, type: 3}
   - {fileID: 21300000, guid: fa6785e5c0d5179428b6f08d5973cde5, type: 3}
   - {fileID: 21300000, guid: 290610f7ae3236e4287d5bca353cb491, type: 3}
+  - {fileID: 21300000, guid: a50beed81f12ad14ab0099efa7424c38, type: 3}
   - {fileID: 21300000, guid: bf3f7209472d9034a9a0106bde875a79, type: 3}
+  - {fileID: 21300000, guid: 02de36890e3b2624793e3d03ab3f25e4, type: 3}
+  - {fileID: 21300000, guid: 77c003a9c8037b5449afcd698c860fd9, type: 3}
   - {fileID: 21300000, guid: 50ce33e90acdaab4f87ddbc0769998dd, type: 3}
+  - {fileID: 21300000, guid: ff6a5a8ab8584474db56779ddf729cbe, type: 3}
   - {fileID: 21300000, guid: 76e49d2b2348ac54893ae03cf75cf555, type: 3}
   - {fileID: 21300000, guid: cac363cb623066a44a2ec403a991d8b8, type: 3}
   - {fileID: 21300000, guid: 6039691de48915045a6c29ab54a34122, type: 3}
+  - {fileID: 21300000, guid: 4a39672d899441f4aab51f08fd732939, type: 3}
   - {fileID: 21300000, guid: 1865d14e4260fe3448ea1f85c8b89c19, type: 3}
+  - {fileID: 21300000, guid: 9a6f29bf111468d4a80e7f472274c319, type: 3}
+  - {fileID: 21300000, guid: 3c9536efd28e7df408bcee9445405de4, type: 3}
   m_PackedSpriteNamesToIndex:
   - Rope
   - BuildWheelCard
   - Seaweed
   - UIWoodTile
+  - Toast1
+  - Toast4
   - BuildSailCard
   - UIPlasticBottleTile
   - UIRopeTile
   - UINailsTile
   - UISeaweedTile
+  - Toast2
+  - Toast8
   - AdriftLogo
+  - Toast3
   - Button
   - PlasticBottle
+  - Winscreen
   - BuildMastCard
+  - Toast6
+  - Toast10
   - Sack
+  - Toast5
   - Driftwood
   - UISackTile
   - Nails
+  - Toast11
   - BuildHullCard
+  - Toast7
+  - Toast9
   m_Tag: UI_Sprites
   m_IsVariant: 0
