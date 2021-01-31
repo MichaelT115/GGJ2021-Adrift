@@ -31,13 +31,14 @@ public class Poop : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+        GameObject poopSplatterParticleObj = Instantiate(poopSplatter, transform.position, transform.rotation);
+
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
-            playerController.GetHit();         
+            poopSplatterParticleObj.GetComponent<AudioSource>().Play();
+            playerController.GetHit();
         }
-
-        GameObject poopSplatterParticleObj = Instantiate(poopSplatter, transform.position, transform.rotation);
 
         Destroy(poopTargeterObj);
 
