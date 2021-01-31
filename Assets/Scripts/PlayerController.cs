@@ -50,10 +50,10 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			GameManager.TogglePause();
-			anim.speed = GameManager.Pause ? 0 : 1;
+			anim.speed = GameManager.IsPaused ? 0 : 1;
 		}
 
-		if (!GameManager.Pause)
+		if (!GameManager.IsPaused)
 		{
 			if (IsWalking && canMove)
 			{
