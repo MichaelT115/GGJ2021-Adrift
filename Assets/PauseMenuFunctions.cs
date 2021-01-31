@@ -10,6 +10,11 @@ public sealed class PauseMenuFunctions : MonoBehaviour
 
 	public void ResumeGame() => GameManager.IsPaused = false;
 	public void ResetGame() => SceneManager.LoadScene(ActiveSceneName, LoadSceneMode.Single);
-	public void QuitToMainMenu() => SceneManager.LoadScene(MENU_SCENE_NAME, LoadSceneMode.Single);
+	public void QuitToMainMenu()
+	{
+		GameManager.IsPaused = false;
+		SceneManager.LoadScene(MENU_SCENE_NAME, LoadSceneMode.Single);
+	}
+
 	public void QuitGame() => Application.Quit();
 }

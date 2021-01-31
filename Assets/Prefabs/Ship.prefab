@@ -211,6 +211,7 @@ MonoBehaviour:
   currentInstructions: {fileID: 0}
   gameSequence: {fileID: 11400000, guid: a69924c0c7933ef41b765cfce15da600, type: 2}
   tierLevel: 0
+  constructionParticles: {fileID: 0}
   onShipComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -246,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7482fcf2ea15a4f826f690afa09025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultDisplayLevel: 2
+  defaultDisplayLevel: 0
   shipParts:
   - {fileID: 646515964955242834}
   - {fileID: 2096287557965175685}
