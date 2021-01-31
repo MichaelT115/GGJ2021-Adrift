@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Toast : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Toast : MonoBehaviour
 
 	[SerializeField]
 	private TMPro.TMP_Text text;
+	[SerializeField]
+	private Image image;
 
 	private void Start()
 	{
@@ -25,6 +28,13 @@ public class Toast : MonoBehaviour
 	public void DisplayMessage(string message)
 	{
 		text.text = message;
+		time = 0;
+		enabled = true;
+	}
+
+	public void DisplayMessage(Sprite sprite)
+	{
+		image.sprite = sprite;
 		time = 0;
 		enabled = true;
 	}

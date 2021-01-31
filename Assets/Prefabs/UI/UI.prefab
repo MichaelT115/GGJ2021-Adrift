@@ -138,7 +138,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toast: {fileID: 6482722352647957243}
   time: 0
-  text: {fileID: 2527013604784108945}
+  text: {fileID: 0}
+  image: {fileID: 9011201559903994332}
 --- !u!114 &1046299807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,12 +169,38 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnMessageSprite:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1046299806}
+        m_MethodName: DisplayMessage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   messages:
   - Hello World
   - Hi World
   - Hello, World
   - World!!!
   - World World
+  messageSprites:
+  - {fileID: 21300000, guid: 360ca442315160e46b18a7c0dbd8c5a6, type: 3}
+  - {fileID: 21300000, guid: 4d4379e468bd08e429745b4f512459a2, type: 3}
+  - {fileID: 21300000, guid: e3650725934b8c941b6f6e2a621c0661, type: 3}
+  - {fileID: 21300000, guid: 941a5b425c141194083303bb1ad8dc5a, type: 3}
+  - {fileID: 21300000, guid: ff6a5a8ab8584474db56779ddf729cbe, type: 3}
+  - {fileID: 21300000, guid: 02de36890e3b2624793e3d03ab3f25e4, type: 3}
+  - {fileID: 21300000, guid: 9a6f29bf111468d4a80e7f472274c319, type: 3}
+  - {fileID: 21300000, guid: 19a834f455ad5cb46aa314c746c73d97, type: 3}
+  - {fileID: 21300000, guid: 3c9536efd28e7df408bcee9445405de4, type: 3}
+  - {fileID: 21300000, guid: 77c003a9c8037b5449afcd698c860fd9, type: 3}
+  - {fileID: 21300000, guid: 4a39672d899441f4aab51f08fd732939, type: 3}
 --- !u!114 &3752507102527218832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +720,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 5365588446205601487, guid: 9e3a7f64ff1dbe64b9f06820e94881e5,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365588446205601487, guid: 9e3a7f64ff1dbe64b9f06820e94881e5,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e3a7f64ff1dbe64b9f06820e94881e5, type: 3}
 --- !u!224 &3551263978363809823 stripped
@@ -772,11 +809,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6996637831366781155, guid: 0a4fe856874a3ae4f846be81e171c9fc,
         type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6996637831366781155, guid: 0a4fe856874a3ae4f846be81e171c9fc,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -835,6 +867,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7286246072402515828, guid: 0a4fe856874a3ae4f846be81e171c9fc,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a4fe856874a3ae4f846be81e171c9fc, type: 3}
 --- !u!224 &6482722352647957243 stripped
@@ -843,16 +880,16 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4102300596357153304}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2527013604784108945 stripped
+--- !u!114 &9011201559903994332 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2017487101100144521, guid: 0a4fe856874a3ae4f846be81e171c9fc,
+  m_CorrespondingSourceObject: {fileID: 5035152730012500932, guid: 0a4fe856874a3ae4f846be81e171c9fc,
     type: 3}
   m_PrefabInstance: {fileID: 4102300596357153304}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6479533165243313988

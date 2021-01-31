@@ -15,12 +15,18 @@ public class MessageGenerator : MonoBehaviour
 
 	[Serializable]
 	private class MessageEvent : UnityEvent<string> { }
+	[Serializable]
+	private class MessageSpriteEvent : UnityEvent<Sprite> { }
 
 	[SerializeField]
 	private MessageEvent OnMessage;
+	[SerializeField]
+	private MessageSpriteEvent OnMessageSprite;
 
 	[SerializeField]
 	private string[] messages;
+	[SerializeField]
+	private Sprite[] messageSprites;
 
 	private void Update()
 	{
@@ -29,17 +35,13 @@ public class MessageGenerator : MonoBehaviour
 		if (countdown <= 0)
 		{
 			countdown += Toast.TOAST_TIME + Random.Range(minimumTime, maximumTime);
-			string message = RandomMessage;
+			var randomSprite = RandomSprite;
 
-			OnMessage.Invoke(message);
-			Debug.Log($"Message: {message}");
+			OnMessageSprite.Invoke(randomSprite);
+			Debug.Log($"Message: {randomSprite}");
 		}
 	}
 
 	private string RandomMessage => messages[Random.Range(0, messages.Length)];
-
-    public void onSMS(string message) {
-        Debug.Log($"Message: {message}");
-        OnMessage.Invoke(message);
-    }
+	private Sprite RandomSprite => messageSprites[Random.Range(0, messageSprites.Length)];
 }
