@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Fabric
   m_EditorClassIdentifier: Assembly-CSharp::MaterialType
   displayName: Fabric
-  icon: {fileID: 21300000, guid: 50ce33e90acdaab4f87ddbc0769998dd, type: 3}
+  icon: {fileID: 21300000, guid: cac363cb623066a44a2ec403a991d8b8, type: 3}

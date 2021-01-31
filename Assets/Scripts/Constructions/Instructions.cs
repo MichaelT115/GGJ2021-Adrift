@@ -22,6 +22,8 @@ public sealed class Instructions : ScriptableObject
 	private Entry[] entries;
 	[SerializeField]
 	private string shipPartName;
+	[SerializeField]
+	private Sprite card;
 
 	public Entry[] Entries => entries;
 	public string ShipPartName => shipPartName;
@@ -38,13 +40,17 @@ public sealed class Instructions : ScriptableObject
 		return ref Entry.EMTPY;
 	}
 
-	public static Instructions EMPTY {
-		get  {		
+	public static Instructions EMPTY
+	{
+		get
+		{
 			var instructions = CreateInstance<Instructions>();
 
 			instructions.entries = new Entry[0];
 
 			return instructions;
 		}
-}
+	}
+
+	public Sprite Card => card;
 }

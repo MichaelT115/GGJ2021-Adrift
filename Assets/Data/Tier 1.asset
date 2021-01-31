@@ -20,3 +20,4 @@ MonoBehaviour:
   - materialType: {fileID: 11400000, guid: 7bc8295866c4fe246b1ad1c241a2742e, type: 2}
     count: 3
   shipPartName: Hull
+  card: {fileID: 21300000, guid: 1865d14e4260fe3448ea1f85c8b89c19, type: 3}

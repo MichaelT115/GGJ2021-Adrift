@@ -26,3 +26,4 @@ MonoBehaviour:
   - materialType: {fileID: 11400000, guid: 6e0e65497f3557847af673935a7c3173, type: 2}
     count: 1
   shipPartName: Sail
+  card: {fileID: 21300000, guid: f1804472bae36a8479e59c598d36f78d, type: 3}
