@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73defaedef1f8fb48ab4fcddff616d52, type: 3}
   m_Name: Tier 3
   m_EditorClassIdentifier: 
-  entries: []
+  entries:
+  - materialType: {fileID: 11400000, guid: 7bc8295866c4fe246b1ad1c241a2742e, type: 2}
+    count: 1
+  - materialType: {fileID: 11400000, guid: 7092d7f2e15c5354e82c1e0d8c91370f, type: 2}
+    count: 2
+  - materialType: {fileID: 11400000, guid: e5d3c052722ed2a4fb38d4e6b68a194b, type: 2}
+    count: 1
+  shipPartName: Wheel

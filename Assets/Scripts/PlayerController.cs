@@ -62,12 +62,12 @@ public class PlayerController : MonoBehaviour
 
 	private void CheckForGrabber()
     {
-        if (!playerGrabber.IsHoldingObject && playerGrabber.IsNearGrabbableObject && Input.GetKeyDown(KeyCode.F))
-        {
-            playerGrabber.GrabItem();
-        }
+		if (!playerGrabber.IsHoldingObject && playerGrabber.IsNearGrabbableObject && Input.GetKeyDown(KeyCode.F))
+		{
+			playerGrabber.GrabItem();
+		}
 
-        else if (playerGrabber.IsHoldingObject && Input.GetKeyDown(KeyCode.F))
+		else if (playerGrabber.IsHoldingObject && Input.GetKeyDown(KeyCode.F))
 		{
 			ConstructionHandler constructionHandler = ConstructionZone;
 			if (constructionHandler != null)
