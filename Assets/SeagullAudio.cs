@@ -16,6 +16,7 @@ public class SeagullAudio : MonoBehaviour
 
     private void Start()
     {
+        seagullAudioSource = GetComponent<AudioSource>();
         InvokeRepeating("PlaySound", initialDelay, repeatingDelay);
     }
 

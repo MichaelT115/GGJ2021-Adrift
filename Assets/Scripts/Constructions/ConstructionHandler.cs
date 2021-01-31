@@ -16,6 +16,9 @@ public sealed class ConstructionHandler : MonoBehaviour
 	[SerializeField]
 	private int tierLevel = 0;
 
+    [SerializeField]
+    private ParticleSystem constructionParticles = new ParticleSystem();
+
 	#region Events
 	[Serializable]
 	private sealed class InstructionsEvent : UnityEvent<Instructions> { }
@@ -36,12 +39,12 @@ public sealed class ConstructionHandler : MonoBehaviour
 	private StorageStateEvent onStorageState;
 	#endregion
 
-
 	private void Start() => SetTier(0);
 
-	private void SetTier(int i)
+    private void SetTier(int i)
 	{
-		TierLevel = i;
+     
+        TierLevel = i;
 		CurrentInstructions = gameSequence.Tiers[tierLevel].Instructions;
 	}
 
@@ -55,10 +58,9 @@ public sealed class ConstructionHandler : MonoBehaviour
 
 	public void AddToStorage(MaterialType materialType)
 	{
-		storage.Add(materialType);
-
+        constructionParticles.Play();
+        storage.Add(materialType);
 		onStorageState.Invoke(currentInstructions, storage);
-
 		if (IsConstructionFinished(CurrentInstructions, storage))
 		{
 			storage.Clear();
@@ -72,6 +74,7 @@ public sealed class ConstructionHandler : MonoBehaviour
 			else
 			{
 				SetTier(tierLevel + 1);
+
 			}
 		}
 	}
