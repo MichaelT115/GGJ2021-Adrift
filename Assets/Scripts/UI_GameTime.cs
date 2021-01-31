@@ -13,6 +13,6 @@ public sealed class UI_GameTime : MonoBehaviour
 		var minutes = ((int)(time / 60));
 		var seconds = ((int)(time % 60)).ToString("D2");
 		var centiseconds = ((int)(time % 1 * 100)).ToString("D2");
-		return $"<mspace=${MONOSPACE_WIDTH}>{minutes}:{seconds};{centiseconds}</mspace>";
+		return $"<mspace=${MONOSPACE_WIDTH}>{minutes}:{seconds}:{centiseconds}</mspace>";
 	}
 }
