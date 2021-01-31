@@ -51,6 +51,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: e3650725934b8c941b6f6e2a621c0661, type: 3}
   - {fileID: 21300000, guid: fa6785e5c0d5179428b6f08d5973cde5, type: 3}
   - {fileID: 21300000, guid: 290610f7ae3236e4287d5bca353cb491, type: 3}
+  - {fileID: 21300000, guid: a50beed81f12ad14ab0099efa7424c38, type: 3}
   - {fileID: 21300000, guid: bf3f7209472d9034a9a0106bde875a79, type: 3}
   - {fileID: 21300000, guid: 02de36890e3b2624793e3d03ab3f25e4, type: 3}
   - {fileID: 21300000, guid: 77c003a9c8037b5449afcd698c860fd9, type: 3}
@@ -81,6 +82,7 @@ SpriteAtlas:
   - Toast3
   - Button
   - PlasticBottle
+  - Winscreen
   - BuildMastCard
   - Toast6
   - Toast10
