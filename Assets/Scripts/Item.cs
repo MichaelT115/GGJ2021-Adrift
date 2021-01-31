@@ -10,11 +10,10 @@ public sealed class Item : MonoBehaviour
     private GameObject textObject;
     Transform cameraPosition;
 
-    private Outline outline;
+    Outline outline;
 
-    [SerializeField]
     [Header("Audio")]
-    private AudioSource itemAudioSource;
+    AudioSource itemAudioSource;
     [SerializeField]
     private AudioClip pickupItemAudioClip;
     [SerializeField]
@@ -51,7 +50,7 @@ public sealed class Item : MonoBehaviour
     {
 		if (pickupItemAudioClip != null)
 		{
-			itemAudioSource?.PlayOneShot(pickupItemAudioClip);
+			itemAudioSource.PlayOneShot(pickupItemAudioClip);
 		}
 
 		HideTextAndOutline();
@@ -61,7 +60,7 @@ public sealed class Item : MonoBehaviour
     {
         if (dropItemAudioClip != null)
 		{
-			itemAudioSource?.PlayOneShot(dropItemAudioClip);
+			itemAudioSource.PlayOneShot(dropItemAudioClip);
 		}
 	}
 
