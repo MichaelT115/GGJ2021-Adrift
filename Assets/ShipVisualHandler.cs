@@ -9,6 +9,7 @@ public sealed class ShipVisualHandler : MonoBehaviour
     [SerializeField]
     private GameObject[] shipParts;
 
+  
     private void Start() => DisplayProgress(defaultDisplayLevel);
 
     public void DisplayProgress(int displayLevel)
@@ -36,4 +37,6 @@ public sealed class ShipVisualHandler : MonoBehaviour
             }
         }
     }
+
+  
 }

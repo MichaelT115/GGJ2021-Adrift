@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private ParticleSystem playerStunParticles;
+    private float waterSlowingValue = 1;
 
     private void Start()
     {
@@ -62,12 +63,12 @@ public class PlayerController : MonoBehaviour
 
 	private void CheckForGrabber()
     {
-		if (!playerGrabber.IsHoldingObject && playerGrabber.IsNearGrabbableObject && Input.GetKeyDown(KeyCode.F))
-		{
-			playerGrabber.GrabItem();
-		}
+        if (!playerGrabber.IsHoldingObject && playerGrabber.IsNearGrabbableObject && Input.GetKeyDown(KeyCode.F))
+        {
+            playerGrabber.GrabItem();
+        }
 
-		else if (playerGrabber.IsHoldingObject && Input.GetKeyDown(KeyCode.F))
+        else if (playerGrabber.IsHoldingObject && Input.GetKeyDown(KeyCode.F))
 		{
 			ConstructionHandler constructionHandler = ConstructionZone;
 			if (constructionHandler != null)
@@ -90,9 +91,25 @@ public class PlayerController : MonoBehaviour
 		itemWeight = playerGrabber.GrabbedObjectWeight;
     }
 
-	private void WalkInDirection(float zRotation)
+    private void OnTriggerEnter(Collider other)
     {
-        float speed = (step - itemWeight) * Time.deltaTime;
+        if (other.gameObject.CompareTag("Water"))
+        {
+            waterSlowingValue = 3;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Water"))
+        {
+            waterSlowingValue = 1;
+        }
+    }
+
+    private void WalkInDirection(float zRotation)
+    {
+        float speed = ((step - itemWeight)/waterSlowingValue) * Time.deltaTime;
         transform.localRotation =  Quaternion.Euler(0, zRotation, 0);
         transform.Translate(Vector3.forward * speed);
 
