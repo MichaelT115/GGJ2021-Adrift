@@ -10,8 +10,9 @@ public class SeaUrchin : MonoBehaviour
 
             Vector3 dir = c.contacts[0].point - transform.position;
             dir = -dir.normalized;
-            c.gameObject.GetComponent<Rigidbody>().AddForce(dir * 5000);
-            c.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 12000);
+            c.gameObject.GetComponent<Rigidbody>().AddForce(dir * 15000);
+            c.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 25000);
+            c.gameObject.GetComponent<PlayerController>().GetHit();
         }
     }
 }
