@@ -15,4 +15,6 @@ MonoBehaviour:
   entries:
   - materialType: {fileID: 11400000, guid: 55de0716cb9db304b8527795ac6f723a, type: 2}
     count: 3
-  shipPartName: Bow
+  - materialType: {fileID: 11400000, guid: 7092d7f2e15c5354e82c1e0d8c91370f, type: 2}
+    count: 1
+  shipPartName: Mast
