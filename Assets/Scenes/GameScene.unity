@@ -7980,6 +7980,12 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!1 &1497309009 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4452122361490737857, guid: 45dfa1a852573a84590683acf8b339fa,
+    type: 3}
+  m_PrefabInstance: {fileID: 141059019582351416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1502902451
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10695,6 +10701,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a60a416802a0e574c9be680ba8dcfd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1497309009}
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1929358894
 Transform:
   m_ObjectHideFlags: 0
