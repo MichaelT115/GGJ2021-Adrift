@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class SeaUrchin : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip seaUrchinPop;
+
     private void OnCollisionEnter(Collision c)
     {
         if (c.gameObject.CompareTag("Player")) {
+
+            GetComponent<AudioSource>().PlayOneShot(seaUrchinPop);
+            GetComponent<Animation>().Play("Pop");
 
             Vector3 dir = c.contacts[0].point - transform.position;
             dir = -dir.normalized;

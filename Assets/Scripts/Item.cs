@@ -56,15 +56,15 @@ public sealed class Item : MonoBehaviour
 		HideTextAndOutline();
     }
 
-    public void Dropped()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (dropItemAudioClip != null)
-		{
-			itemAudioSource.PlayOneShot(dropItemAudioClip);
-		}
-	}
+        if (dropItemAudioClip != null && collision.gameObject.CompareTag(("Terrain")))
+        {
+            itemAudioSource.PlayOneShot(dropItemAudioClip);
+        }
+    }
 
-	public void Remove()
+    public void Remove()
 	{
         Destroy(gameObject);
 	}
