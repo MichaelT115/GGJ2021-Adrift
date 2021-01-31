@@ -37,4 +37,9 @@ public class MessageGenerator : MonoBehaviour
 	}
 
 	private string RandomMessage => messages[Random.Range(0, messages.Length)];
+
+    public void onSMS(string message) {
+        Debug.Log($"Message: {message}");
+        OnMessage.Invoke(message);
+    }
 }
