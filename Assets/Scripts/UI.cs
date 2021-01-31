@@ -12,7 +12,7 @@ public sealed class UI : MonoBehaviour
 
 	public void DisplayInstructions(Instructions instructions)
 	{
-		header.text = $"Build a: {instructions.ShipPartName}";
+		header.text = $"Build a {instructions.ShipPartName}";
 
 		foreach (var item in list.GetComponentsInChildren<UI_ListItem>())
 		{
@@ -29,7 +29,7 @@ public sealed class UI : MonoBehaviour
 
 	public void DisplayStorageState(Instructions instructions, Storage storage)
 	{
-		header.text = $"Build a: {instructions.ShipPartName}";
+		header.text = $"Build a {instructions.ShipPartName}";
 
 		foreach (var item in list.GetComponentsInChildren<UI_ListItem>())
 		{
