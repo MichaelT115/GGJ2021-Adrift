@@ -37,27 +37,36 @@ public class PlayerController : MonoBehaviour
 
     private void Controls()
 	{
-		if (IsWalking && canMove)
+		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			WalkInDirection(Direction);
+			GameManager.TogglePause();
+			anim.speed = GameManager.Pause ? 0 : 1;
 		}
 
-		if (!IsWalking && canMove)
+		if (!GameManager.Pause)
 		{
-			if (!playerGrabber.IsHoldingObject)
+			if (IsWalking && canMove)
 			{
-				anim.SetBool("Carrying Idle", false);
-				anim.SetBool("Idle", true);
+				WalkInDirection(Direction);
 			}
 
-			if (playerGrabber.IsHoldingObject)
+			if (!IsWalking && canMove)
 			{
-				anim.SetBool("Carrying Idle", true);
-				anim.SetBool("Idle", false);
-			}
+				if (!playerGrabber.IsHoldingObject)
+				{
+					anim.SetBool("Carrying Idle", false);
+					anim.SetBool("Idle", true);
+				}
 
-			anim.SetBool("Walking", false);
-			anim.SetBool("Carrying Walking", false);
+				if (playerGrabber.IsHoldingObject)
+				{
+					anim.SetBool("Carrying Idle", true);
+					anim.SetBool("Idle", false);
+				}
+
+				anim.SetBool("Walking", false);
+				anim.SetBool("Carrying Walking", false);
+			}
 		}
 	}
 
