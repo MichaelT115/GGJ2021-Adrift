@@ -340,9 +340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialType: {fileID: 11400000, guid: bd1e1a36112f384468ba63f4367a2b0d, type: 2}
   textObject: {fileID: 2214853027342517571}
-  itemAudioSource: {fileID: 365141418297949402}
   pickupItemAudioClip: {fileID: 8300000, guid: 21173ec6fa4f94084a75991c2351ba1d, type: 3}
-  dropItemAudioClip: {fileID: 0}
+  dropItemAudioClip: {fileID: 8300000, guid: 6af96ccea8da900438551e4f093f4ef9, type: 3}
 --- !u!54 &2247923014068879509
 Rigidbody:
   m_ObjectHideFlags: 0
