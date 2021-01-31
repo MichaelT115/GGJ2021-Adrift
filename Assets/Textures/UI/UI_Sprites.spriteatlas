@@ -36,6 +36,8 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 6aa7b160a457735459402bff9a9ea589, type: 3}
   - {fileID: 21300000, guid: 44c324d002d138c478d1d4a4e4df2afb, type: 3}
+  - {fileID: 21300000, guid: 2bee31057f42e2b4c9ce66e4d0762746, type: 3}
+  - {fileID: 21300000, guid: fa6785e5c0d5179428b6f08d5973cde5, type: 3}
   - {fileID: 21300000, guid: 290610f7ae3236e4287d5bca353cb491, type: 3}
   - {fileID: 21300000, guid: 50ce33e90acdaab4f87ddbc0769998dd, type: 3}
   - {fileID: 21300000, guid: 76e49d2b2348ac54893ae03cf75cf555, type: 3}
@@ -43,6 +45,8 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Rope
   - Seaweed
+  - AdriftLogo
+  - Button
   - PlasticBottle
   - Sack
   - Driftwood
