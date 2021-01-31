@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
         anim.SetTrigger("Get Hit");
 
-        yield return new WaitForSeconds(1.25f); //lenght of animation
+        yield return new WaitForSeconds(1.6f); //lenght of animation
 
         playerStunParticles.Stop();
         canMove = true;
