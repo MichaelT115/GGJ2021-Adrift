@@ -351,6 +351,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4933699707548314212, guid: 8460b4e64f1e80f4981463f988ff24d8,
         type: 3}
+      propertyPath: poofParticles
+      value: 
+      objectReference: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c,
+        type: 3}
+    - target: {fileID: 4933699707548314212, guid: 8460b4e64f1e80f4981463f988ff24d8,
+        type: 3}
       propertyPath: dropItemAudioClip
       value: 
       objectReference: {fileID: 8300000, guid: b79be000d09514093b084db81e27074e, type: 3}

@@ -207,9 +207,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialType: {fileID: 11400000, guid: 7bc8295866c4fe246b1ad1c241a2742e, type: 2}
   textObject: {fileID: 2742893910060852990}
-  itemAudioSource: {fileID: 365141418297949402}
   pickupItemAudioClip: {fileID: 8300000, guid: 2c667db8f33294f4ca5a25bc1383033f, type: 3}
   dropItemAudioClip: {fileID: 8300000, guid: 2c667db8f33294f4ca5a25bc1383033f, type: 3}
+  poofParticles: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c,
+    type: 3}
 --- !u!54 &2247923014068879509
 Rigidbody:
   m_ObjectHideFlags: 0

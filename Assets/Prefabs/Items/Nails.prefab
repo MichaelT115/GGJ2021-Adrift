@@ -342,6 +342,8 @@ MonoBehaviour:
   textObject: {fileID: 2214853027342517571}
   pickupItemAudioClip: {fileID: 8300000, guid: 21173ec6fa4f94084a75991c2351ba1d, type: 3}
   dropItemAudioClip: {fileID: 8300000, guid: 6af96ccea8da900438551e4f093f4ef9, type: 3}
+  poofParticles: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c,
+    type: 3}
 --- !u!54 &2247923014068879509
 Rigidbody:
   m_ObjectHideFlags: 0

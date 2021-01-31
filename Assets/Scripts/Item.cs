@@ -22,6 +22,9 @@ public sealed class Item : MonoBehaviour
 	public MaterialType MaterialType { get => materialType; set => materialType = value; }
     public Rigidbody Rigidbody { get; private set; }
 
+    [SerializeField]
+    private GameObject poofParticles;
+
 	private void Start()
     {
         outline = GetComponentInChildren<Outline>();
@@ -66,6 +69,7 @@ public sealed class Item : MonoBehaviour
 
     public void Remove()
 	{
+        Instantiate(poofParticles, transform.position, transform.rotation);
         Destroy(gameObject);
 	}
 

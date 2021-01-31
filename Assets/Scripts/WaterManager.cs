@@ -26,10 +26,15 @@ public sealed class WaterManager : MonoBehaviour
 	[SerializeField]
 	private UnityEvent onWaterCreasted;
 
-	private void Start()
+    [SerializeField]
+    private AudioClip highTideAudio;
+
+    [SerializeField]
+    private AudioClip lowTideAudio;
+
+    private void Start()
 	{
 		hasCrested = true;
-
 	}
 
 	private void Update()
@@ -60,7 +65,9 @@ public sealed class WaterManager : MonoBehaviour
 				{
 					highTideCountdown += 15;
 
-					tideLevel = Tide.HIGH_TIDE;
+                    GetComponent<AudioSource>().PlayOneShot(highTideAudio);
+
+                    tideLevel = Tide.HIGH_TIDE;
 					hasCrested = false;
 				}
 				break;
@@ -73,7 +80,9 @@ public sealed class WaterManager : MonoBehaviour
 				{
 					lowTideCountdown += 5;
 
-					tideLevel = Tide.LOW_TIDE;
+                    GetComponent<AudioSource>().PlayOneShot(lowTideAudio);
+
+                    tideLevel = Tide.LOW_TIDE;
 
 					onWaterCreasted.Invoke();
 					hasCrested = true;
