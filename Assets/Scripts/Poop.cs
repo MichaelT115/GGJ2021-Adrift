@@ -36,7 +36,8 @@ public class Poop : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
-            poopSplatterParticleObj.GetComponent<AudioSource>().Play();
+           AudioSource poopSplatterAudio = poopSplatterParticleObj.GetComponent<AudioSource>();
+            poopSplatterAudio.Play();
             playerController.GetHit();
         }
 
