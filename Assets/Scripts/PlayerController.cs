@@ -4,7 +4,14 @@ using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
+	private const string PARAMETER_CARRYING_WALKING = "Carrying Walking";
+	private const string PARAMETER_WALKING = "Walking";
+	private const string PARAMETER_CARRYING_IDLE = "Carrying Idle";
+	private const string PARAMETER_IDLE = "Idle";
+	private const string TRIGGER_GET_HIT = "Get Hit";
+	private const string TAG_WATER = "Water";
+
+	[SerializeField]
     private float step;
 	[SerializeField]
 	private float itemWeight;
@@ -60,25 +67,42 @@ public class PlayerController : MonoBehaviour
 				WalkInDirection(Direction);
 			}
 
-			if (!IsWalking && canMove)
+			if (IsIdle)
 			{
-				if (!playerGrabber.IsHoldingObject)
-				{
-					anim.SetBool("Carrying Idle", false);
-					anim.SetBool("Idle", true);
-				}
+				anim.SetBool(PARAMETER_CARRYING_WALKING, false);
+				anim.SetBool(PARAMETER_WALKING, false);
 
 				if (playerGrabber.IsHoldingObject)
 				{
-					anim.SetBool("Carrying Idle", true);
-					anim.SetBool("Idle", false);
+					anim.SetBool(PARAMETER_CARRYING_IDLE, true);
+					anim.SetBool(PARAMETER_IDLE, false);
 				}
+				else
+				{
+					anim.SetBool(PARAMETER_CARRYING_IDLE, false);
+					anim.SetBool(PARAMETER_IDLE, true);
+				}
+			}
+			else
+			{
+				anim.SetBool(PARAMETER_CARRYING_IDLE, false);
+				anim.SetBool(PARAMETER_IDLE, false);
 
-				anim.SetBool("Walking", false);
-				anim.SetBool("Carrying Walking", false);
+				if (playerGrabber.IsHoldingObject)
+				{
+					anim.SetBool(PARAMETER_CARRYING_WALKING, true);
+					anim.SetBool(PARAMETER_WALKING, false);
+				}
+				else
+				{
+					anim.SetBool(PARAMETER_CARRYING_WALKING, false);
+					anim.SetBool(PARAMETER_WALKING, true);
+				}
 			}
 		}
 	}
+
+	private bool IsIdle => !IsWalking && canMove;
 
 	private void CheckForGrabber()
     {
@@ -120,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Water"))
+        if (other.gameObject.CompareTag(TAG_WATER))
         {
             waterSlowingValue = 3;
         }
@@ -128,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Water"))
+        if (other.gameObject.CompareTag(TAG_WATER))
         {
             waterSlowingValue = 1;
         }
@@ -142,18 +166,18 @@ public class PlayerController : MonoBehaviour
 
         if (!playerGrabber.IsHoldingObject)
         {
-            anim.SetBool("Walking", true);
-            anim.SetBool("Idle", false);
-            anim.SetBool("Carrying Idle", false);
-            anim.SetBool("Carrying Walking", false);
+            anim.SetBool(PARAMETER_WALKING, true);
+            anim.SetBool(PARAMETER_IDLE, false);
+            anim.SetBool(PARAMETER_CARRYING_IDLE, false);
+            anim.SetBool(PARAMETER_CARRYING_WALKING, false);
         }
 
         if (playerGrabber.IsHoldingObject)
         {
-            anim.SetBool("Carrying Walking", true);
-            anim.SetBool("Walking", false);
-            anim.SetBool("Idle", false);
-            anim.SetBool("Carrying Idle", false);          
+            anim.SetBool(PARAMETER_CARRYING_WALKING, true);
+            anim.SetBool(PARAMETER_WALKING, false);
+            anim.SetBool(PARAMETER_IDLE, false);
+            anim.SetBool(PARAMETER_CARRYING_IDLE, false);          
         }
     }
 
@@ -209,7 +233,7 @@ public class PlayerController : MonoBehaviour
             playerGrabber.DropItem();
         }
 
-        anim.SetTrigger("Get Hit");
+        anim.SetTrigger(TRIGGER_GET_HIT);
 
         yield return new WaitForSeconds(1.6f); //lenght of animation
 
