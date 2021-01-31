@@ -20,11 +20,21 @@ public class PlayerController : MonoBehaviour
     private ParticleSystem playerStunParticles;
     private float waterSlowingValue = 1;
 
+    AudioSource playerAudioSource;
+
+    [SerializeField]
+    private AudioClip confirmAudioClip;
+    [SerializeField]
+    private AudioClip rejectAudioClip;
+    [SerializeField]
+    private AudioClip takeDamageAudioClip;
+    
+
     private void Start()
     {
         itemWeight = 0;
         rb = GetComponent<Rigidbody>();
-
+        playerAudioSource = GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
         playerGrabber = GetComponentInChildren<Grabber>();
     }
@@ -80,7 +90,15 @@ public class PlayerController : MonoBehaviour
 				{
 					constructionHandler.AddToStorage(item.MaterialType);
 					playerGrabber.RemoveItem();
-				}
+                    playerAudioSource.PlayOneShot(confirmAudioClip);
+
+                }
+
+                else
+                {
+                    playerGrabber.DropItem();
+                    playerAudioSource.PlayOneShot(rejectAudioClip);
+                }
 			}
 			else
 			{
@@ -173,8 +191,9 @@ public class PlayerController : MonoBehaviour
     public IEnumerator GettingHit()
     {
         canMove = false;
-        //rb.AddForceAtPosition(Vector3.up * 7500, transform.position);
+
         playerStunParticles.Play();
+        playerAudioSource.PlayOneShot(takeDamageAudioClip);
 
         if (playerGrabber.GrabbedItem != null)
         {

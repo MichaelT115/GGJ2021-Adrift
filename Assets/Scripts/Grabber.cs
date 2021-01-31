@@ -57,7 +57,7 @@ public class Grabber : MonoBehaviour
         grabbedItem.Rigidbody.isKinematic = false;
         grabbedItem.Rigidbody.detectCollisions = true;
 
-        grabbedItem.Dropped();
+     //   grabbedItem.Dropped();
         grabbedItem = null;
     }
 
